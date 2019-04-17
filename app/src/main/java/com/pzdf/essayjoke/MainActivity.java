@@ -1,5 +1,6 @@
 package com.pzdf.essayjoke;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -20,12 +21,15 @@ import com.pzdf.essayjoke.process.JobWakeUpService;
 import com.pzdf.essayjoke.process.MessageService;
 import com.pzdf.essayjokebaselibrary.dialog.AlertDialog;
 import com.pzdf.essayjokebaselibrary.fixBug.FixDexManager;
+import com.pzdf.essayjokebaselibrary.http.HttpUtils;
 import com.pzdf.essayjokebaselibrary.ioc.ExceptionCrashHandler;
 import com.pzdf.essayjokebaselibrary.ioc.OnClick;
 import com.pzdf.framelibrary.BaseSkinActivity;
 import com.pzdf.framelibrary.DefaultNavigationBar;
+import com.pzdf.framelibrary.HttpCallBack;
 import com.pzdf.framelibrary.banner.BannerAdapter;
 import com.pzdf.framelibrary.banner.BannerViewPager;
+import com.pzdf.framelibrary.http.OkHttpEngine;
 import com.pzdf.framelibrary.skin.SkinResource;
 
 import java.io.File;
@@ -34,6 +38,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author jihl
@@ -70,7 +75,7 @@ public class MainActivity extends BaseSkinActivity implements View.OnClickListen
 
 
         //路径  apk  参数都需要放到jni 防止反编译
-       /* HttpUtils.with(this).url("http://is.snssdk.com/2/essay/discovery/v3/")// 路径 apk  参数都需要放到jni
+        HttpUtils.with(this).url("http://is.snssdk.com/2/essay/discovery/v3/")// 路径 apk  参数都需要放到jni
                 .addParam("iid", "6152551759")
                 .addParam("aid", "7")
                 .cache(true)
@@ -97,7 +102,7 @@ public class MainActivity extends BaseSkinActivity implements View.OnClickListen
                 initBanner(result.getData().getRotate_banner().getBanners());
             }
 
-        });*/
+        });
 
 
         //1、请求参数很多 但是有些是公用的
